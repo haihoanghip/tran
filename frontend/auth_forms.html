@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Auth Forms</title>
+</head>
+<body>
+<h2>Register</h2>
+<form id="register">
+  <input name="email" placeholder="Email" required><br>
+  <input name="password" type="password" placeholder="Password" required><br>
+  <input name="name" placeholder="Name"><br>
+  <button type="submit">Register</button>
+</form>
+
+<h2>Login</h2>
+<form id="login">
+  <input name="email" placeholder="Email" required><br>
+  <input name="password" type="password" placeholder="Password" required><br>
+  <button type="submit">Login</button>
+</form>
+
+<h2>Request Reset</h2>
+<form id="requestReset">
+  <input name="email" placeholder="Email" required><br>
+  <button type="submit">Send Reset</button>
+</form>
+
+<script>
+async function post(url, data) {
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  });
+  return res.json();
+}
+
+document.getElementById('register').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(e.target));
+  const r = await post('/backend/register.php', fd);
+  alert(r.message || JSON.stringify(r));
+});
+
+document.getElementById('login').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(e.target));
+  const r = await post('/backend/login.php', fd);
+  alert(r.message || JSON.stringify(r));
+});
+
+document.getElementById('requestReset').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(e.target));
+  const r = await post('/backend/request_reset.php', fd);
+  alert(r.message || JSON.stringify(r));
+});
+</script>
+</body>
+</html>
