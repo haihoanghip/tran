@@ -1,0 +1,286 @@
+/* ==========================================
+   AUTH MODAL STYLESHEET (auth.css)
+   ========================================== */
+
+/* 1. LAYOUT & OVERLAY */
+.auth-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+
+.auth-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: authFadeIn 0.25s ease forwards;
+}
+
+/* 2. MAIN MODAL CONTAINER */
+.auth-modal__box {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--bg, #16171d);
+    border: 1px solid var(--border, #2e303a);
+    padding: 2.5rem 2.25rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow, 0 20px 30px -10px rgba(0, 0, 0, 0.5));
+    animation: authSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.auth-modal__content {
+    animation: authFadeIn 0.2s ease;
+}
+
+/* 3. CLOSE BUTTON */
+.auth-modal__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background-color: var(--code-bg, #1f2028);
+    border: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    color: var(--text, #9ca3af);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.auth-modal__close:hover {
+    background-color: var(--accent, #c084fc);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+/* 4. HEADINGS & TYPOGRAPHY */
+.auth-modal__title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-h, #ffffff);
+    text-align: center;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.02em;
+}
+
+.auth-modal__subtitle {
+    font-size: 0.875rem;
+    color: var(--text, #9ca3af);
+    text-align: center;
+    margin-bottom: 1.75rem;
+    line-height: 1.4;
+}
+
+/* 5. FORM & INPUTS */
+.auth-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.auth-modal__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.auth-modal__field label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-h, #ffffff);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.auth-modal__field input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border, #2e303a);
+    border-radius: 0.65rem;
+    font-size: 0.95rem;
+    background-color: var(--code-bg, #1f2028);
+    color: var(--text-h, #ffffff);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.auth-modal__field input:focus {
+    border-color: var(--accent, #c084fc);
+    box-shadow: 0 0 0 3.5px rgba(192, 132, 252, 0.15);
+}
+
+/* 6. OPTIONS & CHECKBOX */
+.auth-modal__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-modal__remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text, #9ca3af);
+    cursor: pointer;
+    user-select: none;
+}
+
+.auth-modal__remember input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--accent, #c084fc);
+    cursor: pointer;
+}
+
+/* 7. SUBMIT BUTTON */
+.auth-modal__submit {
+    background-color: var(--text-h, #ffffff);
+    color: var(--bg, #16171d);
+    border: none;
+    padding: 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 0.2rem;
+    transition: all 0.2s ease;
+}
+
+.auth-modal__submit:hover {
+    background-color: var(--accent, #c084fc);
+    color: #ffffff;
+}
+
+.auth-modal__submit:active {
+    transform: scale(0.98);
+}
+
+/* 8. DIVIDER */
+.auth-modal__divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0.25rem 0;
+}
+
+.auth-modal__divider::before,
+.auth-modal__divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border, #2e303a);
+}
+
+.auth-modal__divider span {
+    padding: 0 0.85rem;
+    font-size: 0.75rem;
+    color: var(--text, #9ca3af);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* 9. GOOGLE BUTTON */
+.auth-modal__social-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    background-color: var(--code-bg, #1f2028);
+    border: 1px solid var(--border, #2e303a);
+    border-radius: 9999px;
+    color: var(--text-h, #ffffff);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-modal__social-btn:hover {
+    border-color: var(--accent, #c084fc);
+    background-color: var(--social-bg, rgba(47, 48, 58, 0.8));
+    transform: translateY(-1px);
+}
+
+.auth-modal__social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* 10. FOOTER & LINKS */
+.auth-modal__footer {
+    font-size: 0.875rem;
+    color: var(--text, #9ca3af);
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-modal__link-btn {
+    background: none;
+    border: none;
+    color: var(--accent, #c084fc);
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
+
+.auth-modal__link-btn:hover {
+    text-decoration: underline;
+}
+
+.auth-modal__link-btn--bold {
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+/* 11. KEYFRAME ANIMATIONS */
+@keyframes authFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes authSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 12. RESPONSIVE MOBILE */
+@media (max-width: 480px) {
+    .auth-modal__box {
+        padding: 2rem 1.25rem;
+        border-radius: 1.25rem;
+    }
+
+    .auth-modal__title {
+        font-size: 1.5rem;
+    }
+}

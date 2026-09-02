@@ -1,0 +1,500 @@
+/* ==========================================
+   GENERAL & LOGIN ENFORCEMENT
+   ========================================== */
+.home {
+    width: 100%;
+    overflow-x: hidden;
+    cursor: pointer !important;
+}
+
+.home * {
+    cursor: pointer !important;
+}
+
+.hero__overlay,
+.category-card__info {
+    pointer-events: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================
+   1. HERO SECTION
+   ========================================== */
+.hero {
+    position: relative;
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.hero__background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero__background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero__badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+}
+
+.hero__title {
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+
+.hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #e7e5e4;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.hero__actions {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.95rem 2.2rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+.btn--primary {
+    background-color: #ffffff;
+    color: #1c1917;
+}
+
+.btn--primary:hover {
+    background-color: #b45309;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn--outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #ffffff;
+}
+
+.btn--outline:hover {
+    background-color: #ffffff;
+    color: #1c1917;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   2. FEATURES BAR (THANH GIÁ TRỊ)
+   ========================================== */
+.features-bar {
+    background-color: #fafaf9;
+    border-bottom: 1px solid #e7e5e4;
+    padding: 2rem 1.5rem;
+}
+
+.features-bar__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feature-item__icon {
+    font-size: 1.8rem;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-item h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1c1917;
+}
+
+.feature-item p {
+    font-size: 0.8rem;
+    color: #78716c;
+    margin-top: 0.1rem;
+}
+
+/* ==========================================
+   3. SECTIONS COMMON
+   ========================================== */
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+}
+
+.section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.section__title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #1c1917;
+    letter-spacing: -0.02em;
+}
+
+.section__subtitle {
+    font-size: 0.95rem;
+    color: #78716c;
+    margin-top: 0.35rem;
+}
+
+.section__more-btn {
+    background: none;
+    border: none;
+    color: #b45309;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   4. CATEGORIES SECTION
+   ========================================== */
+.categories__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+}
+
+.category-card {
+    position: relative;
+    height: 400px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+.category-card__image {
+    width: 100%;
+    height: 100%;
+}
+
+.category-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover .category-card__image img {
+    transform: scale(1.08);
+}
+
+.category-card__info {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: #ffffff;
+}
+
+.category-card__info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.category-card__info span {
+    font-size: 0.85rem;
+    color: #d6d3d1;
+    margin-top: 0.25rem;
+}
+
+/* ==========================================
+   5. PRODUCTS GRID
+   ========================================== */
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card__image {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #f5f5f4;
+    margin-bottom: 1rem;
+}
+
+.product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-card__image img {
+    transform: scale(1.06);
+}
+
+.product-card__badge {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    background-color: #1c1917;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.3rem 0.65rem;
+    border-radius: 0.3rem;
+    letter-spacing: 0.05em;
+}
+
+.product-card__wishlist {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #1c1917;
+    transition: all 0.2s;
+}
+
+.product-card__quick-add {
+    position: absolute;
+    bottom: 0.85rem;
+    left: 0.85rem;
+    right: 0.85rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1c1917;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-card__quick-add {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-card__category {
+    font-size: 0.75rem;
+    color: #78716c;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.product-card__name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1c1917;
+    margin: 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card__price-box {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.product-card__price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #b45309;
+}
+
+.product-card__old-price {
+    font-size: 0.85rem;
+    color: #a8a29e;
+    text-decoration: line-through;
+}
+
+/* ==========================================
+   6. REVIEWS SECTION (REVIEWS)
+   ========================================== */
+.reviews {
+    background-color: #fafaf9;
+    border-radius: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.review-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.review-card__stars {
+    color: #f59e0b;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.review-card__text {
+    font-size: 0.95rem;
+    color: #44403c;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.review-card__author strong {
+    display: block;
+    color: #1c1917;
+    font-size: 0.95rem;
+}
+
+.review-card__author span {
+    font-size: 0.8rem;
+    color: #78716c;
+}
+
+/* ==========================================
+   7. PROMO BANNER
+   ========================================== */
+.promo-banner {
+    background-color: #1c1917;
+    color: #ffffff;
+    padding: 5.5rem 1.5rem;
+    text-align: center;
+}
+
+.promo-banner__container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.promo-banner__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #b45309;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.promo-banner h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+}
+
+.promo-banner p {
+    color: #a8a29e;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.2rem;
+}
+
+.btn--accent {
+    background-color: #b45309;
+    color: #ffffff;
+}
+
+.btn--accent:hover {
+    background-color: #d97706;
+    transform: translateY(-2px);
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
