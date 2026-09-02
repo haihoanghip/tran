@@ -25,12 +25,30 @@ if ($user) {
   $stmt = $pdo->prepare('UPDATE users SET reset_token = ?, reset_expires = ? WHERE id = ?');
   $stmt->execute([$token, $expires, $user['id']]);
 
-  // send email with link (implement actual mailer)
   $resetLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'your-domain.example') . dirname($_SERVER['PHP_SELF']) . '/reset_password_form.html?token=' . $token;
 
-  // TODO: send email via SMTP/PHPMailer. For now write to a log file for debugging in dev.
-  $log = "Password reset requested for $email. Link: $resetLink\n";
-  file_put_contents(__DIR__ . '/../logs/reset_requests.log', $log, FILE_APPEND | LOCK_EX);
+  // Try to send email using PHPMailer if available
+  $sent = false;
+  if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    try {
+      require_once __DIR__ . '/mailer.php';
+      $subject = 'Reset your password';
+      $html = "<p>We received a request to reset your password.</p><p>Click the link below to reset it (expires in 1 hour):</p><p><a href=\"$resetLink\">Reset password</a></p><p>If you didn't request this, ignore this email.</p>";
+      $sent = send_email($email, '', $subject, $html);
+      if (!$sent) {
+        $log = "[" . date('c') . "] Failed to send reset email to $email. Link: $resetLink\n";
+        file_put_contents(__DIR__ . '/../logs/reset_requests.log', $log, FILE_APPEND | LOCK_EX);
+      }
+    } catch (Throwable $e) {
+      // Fallback to logging if PHPMailer isn't configured properly
+      $log = "[" . date('c') . "] Error sending mail: " . $e->getMessage() . " Link: $resetLink\n";
+      file_put_contents(__DIR__ . '/../logs/reset_requests.log', $log, FILE_APPEND | LOCK_EX);
+    }
+  } else {
+    // No composer/vendor installed — fallback to log for manual testing
+    $log = "[" . date('c') . "] Password reset requested for $email. Link: $resetLink\n";
+    file_put_contents(__DIR__ . '/../logs/reset_requests.log', $log, FILE_APPEND | LOCK_EX);
+  }
 }
 
 // Always return same response
